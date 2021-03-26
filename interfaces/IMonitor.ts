@@ -1,3 +1,5 @@
+import MonitorData from "models/MonitorData";
+
 export interface IMonitor {
-  sendMail(content: string): string;
+  handleDataUpload(data: MonitorData): string;
 }

@@ -11,6 +11,7 @@ import { inject } from "inversify";
 import { IMonitor } from "../interfaces/IMonitor";
 import { IRouterContext, RouterContext } from "koa-router";
 import { resultSuccess } from "../utils/ResponseUtil";
+import MonitorData from "models/MonitorData";
 
 @provideThrowable(TYPE.Controller, "MonitorController")
 @controller("/monitor")
@@ -29,11 +30,14 @@ export default class MonitorController implements interfaces.Controller {
     console.log(ctx.request.body);
     console.log(ctx.query.body);
     var result = "";
-    const requestBody = JSON.stringify(ctx.request.body);
+    var requestBody = JSON.stringify(ctx.request.body);
     if (requestBody !== "{}") {
-      result = this.monitorService.sendMail(requestBody);
+      result = this.monitorService.handleDataUpload(
+        ctx.request.body as MonitorData
+      );
     } else {
-      result = this.monitorService.sendMail(JSON.stringify(ctx.query.body));
+      var queryBody = JSON.parse(ctx.query.body) as MonitorData;
+      result = this.monitorService.handleDataUpload(queryBody);
     }
     ctx.body = resultSuccess(result);
   }

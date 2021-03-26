@@ -9,30 +9,33 @@
   "author": "1195291051@qq.com",
   "license": "ISC",
   "dependencies": {
+    "@koa/cors": "^3.1.0",
     "@types/koa": "^2.11.6",
     "@types/koa-router": "^7.4.1",
     "@types/lodash": "^4.14.165",
     "@types/log4js": "^2.3.5",
     "@types/nodemailer": "^6.4.1",
+    "@types/source-map": "^0.5.7",
     "inversify": "^5.0.1",
     "inversify-binding-decorators": "^4.0.0",
     "inversify-koa-utils": "^1.0.0",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^10.0.0",
-    "koa2-cors": "^2.0.6",
     "lodash": "^4.17.20",
     "log4js": "^6.3.0",
     "mysql": "^2.18.1",
     "nodemailer": "^6.5.0",
     "reflect-metadata": "^0.1.13",
     "scripty": "^2.0.0",
+    "source-map": "^0.7.3",
     "ts-node": "^9.0.0",
     "ts-node-dev": "^1.0.0",
     "typeorm": "^0.2.29",
     "typescript": "^4.1.2"
   },
   "devDependencies": {
-    "@types/koa-bodyparser": "^4.3.0"
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa__cors": "^3.0.2"
   }
 }

@@ -6,7 +6,7 @@ import { buildProviderModule } from "inversify-binding-decorators";
 import { configure, getLogger } from "log4js";
 import config from "./config/index";
 import bodyParser from "koa-bodyparser";
-var cors = require("koa2-cors");
+import cors from "@koa/cors";
 
 configure({
   appenders: {
@@ -28,10 +28,7 @@ const appInstances = server
     app.use(bodyParser({ enableTypes: ["json", "text"] }));
 
     // 处理跨域
-    app.use(async (ctx, next) => {
-      ctx.set("Access-Control-Allow-Origin", "*");
-      await next();
-    });
+    app.use(cors());
   })
   .build()
   .listen(port, () => {
