@@ -5,7 +5,6 @@ import MailSender from "../utils/MailSender";
 import MonitorData from "../models/MonitorData";
 import { ReportMsgType, RuntimeError } from "../models/types";
 import { restore } from "../utils/SourceMap";
-import fs from "fs";
 import path from "path";
 
 const mailSender = new MailSender();

@@ -13,10 +13,6 @@ class MailSender {
     },
   } as SMTPTransport.Options);
 
-  // smtp.exmail.qq.com
-  // user: 'huanglin@wtsd.cn',
-  // pass: 'bvAF4P4KNWaRjJWL',
-
   sendMail(content: string): void {
     console.log("发送邮件" + content);
     var options = {

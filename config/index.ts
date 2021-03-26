@@ -8,13 +8,13 @@ let config = {
 };
 if (process.env.BUILD_ENV === "development") {
   let localConfig = {
-    port: 8000,
+    port: process.env.PORT,
   };
   config = extend(config, localConfig);
 }
 if (process.env.BUILD_ENV === "production") {
   let prodConfig = {
-    port: 8082,
+    port: process.env.PORT,
     memoryFlag: "memory",
   };
   config = extend(config, prodConfig);
