@@ -4,7 +4,7 @@ import { join } from "path";
 let config = {
   viewDir: join(__dirname, "..", "views"),
   staticDir: join(__dirname, "..", "assets"),
-  port: 3000,
+  port: 8000,
 };
 if (process.env.BUILD_ENV === "development") {
   let localConfig = {

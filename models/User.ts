@@ -1,15 +1,12 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
-
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 export namespace UserModel {
-  
   @Entity()
   export class User {
-    name: string;
+    name?: string;
 
-    age: number;
+    age?: number;
 
-    password: string;
-
+    password?: string;
   }
 }

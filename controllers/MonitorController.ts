@@ -13,6 +13,11 @@ import { IRouterContext, RouterContext } from "koa-router";
 import { resultSuccess } from "../utils/ResponseUtil";
 import MonitorData from "models/MonitorData";
 
+// setTimeout(() => {
+//   Promise.reject("我是promise错误");
+//   // throw new Error("就看得见");
+// }, 2000);
+
 @provideThrowable(TYPE.Controller, "MonitorController")
 @controller("/monitor")
 export default class MonitorController implements interfaces.Controller {
@@ -21,15 +26,16 @@ export default class MonitorController implements interfaces.Controller {
     this.monitorService = monitorService;
   }
 
-  @httpGet("/data-upload")
   @httpPost("/data-upload")
   private monitorDataUploaded(
     ctx: IRouterContext,
     next: () => Promise<unknown>
   ): void {
+    console.log("收到data-upload");
+
     console.log(ctx.request.body);
-    console.log(ctx.query.body);
     var result = "";
+
     var requestBody = JSON.stringify(ctx.request.body);
     if (requestBody !== "{}") {
       result = this.monitorService.handleDataUpload(
@@ -40,5 +46,10 @@ export default class MonitorController implements interfaces.Controller {
       result = this.monitorService.handleDataUpload(queryBody);
     }
     ctx.body = resultSuccess(result);
+  }
+
+  @httpGet("/test")
+  private testError(ctx: IRouterContext, next: () => Promise<unknown>): void {
+    ctx.body = "dfdf";
   }
 }

@@ -49,6 +49,11 @@ export class MonitorService implements IMonitor {
       case ReportMsgType.PERFORMANCE_VITALS:
         // 接收到web-vitals数据，LCP FIB等
         break;
+      case ReportMsgType.NODE_UNCAUGHT_ERROR:
+        // 接收到node报错
+        mailSender.sendMail(JSON.stringify(data));
+
+        break;
       default:
         break;
     }
