@@ -50,6 +50,6 @@ export default class MonitorController implements interfaces.Controller {
 
   @httpGet("/test")
   private testError(ctx: IRouterContext, next: () => Promise<unknown>): void {
-    ctx.body = "dfdf";
+    ctx.throw(500, "Internal Server Error 3434434");
   }
 }

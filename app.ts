@@ -7,7 +7,12 @@ import { configure, getLogger } from "log4js";
 import config from "./config/index";
 import bodyParser from "koa-bodyparser";
 import cors from "@koa/cors";
-import WebMonitor from "./monitor/web-monitor";
+import WebMonitor from "./monitor/node-monitor";
+import baseReponse from "./middlewares/baseReponse";
+
+const monitor = new WebMonitor({
+  logUrl: "http://localhost:8000/monitor/data-upload",
+});
 
 configure({
   appenders: {
@@ -30,12 +35,9 @@ const appInstances = server
 
     // 处理跨域
     app.use(cors());
+    app.use(monitor.handleHttpError());
   })
   .build()
   .listen(port, () => {
     console.log("🍺服务启动成功----> port:", port);
   });
-
-new WebMonitor({
-  logUrl: "http://localhost:8000/monitor/data-upload",
-});

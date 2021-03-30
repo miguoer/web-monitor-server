@@ -3,7 +3,7 @@ declare type EffectiveConnectionType = "2g" | "3g" | "4g" | "5g" | "slow-2g" | "
 
 declare interface IAnalyticsTrackerOptions {
     metricName: string;
-    data: IYidengData;
+    data: IUploadData;
     eventProperties: object;
     navigatorInformation: INavigatorInfo;
     vitalsScore: IVitalsScore;
@@ -49,14 +49,14 @@ declare interface INetworkInformation {
     saveData?: boolean;
 }
 
-declare type IVitalsScore = "good" | "needsImprovement" | "poor" | null;
+declare type IUploadData = number | INavigationTiming | INetworkInformation;
 
-declare type IYidengData = number | INavigationTiming | INetworkInformation;
+declare type IVitalsScore = "good" | "needsImprovement" | "poor" | null;
 
 declare class WebMonitor {
     private reportClient;
+    private handleHttpError;
     constructor(options?: IInitOptions);
-    private initPerformance;
 }
 export default WebMonitor;
 
