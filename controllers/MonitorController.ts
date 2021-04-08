@@ -42,7 +42,7 @@ export default class MonitorController implements interfaces.Controller {
         ctx.request.body as MonitorData
       );
     } else {
-      var queryBody = JSON.parse(ctx.query.body) as MonitorData;
+      var queryBody = JSON.parse(ctx.query.body as string) as MonitorData;
       result = this.monitorService.handleDataUpload(queryBody);
     }
     ctx.body = resultSuccess(result);
