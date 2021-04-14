@@ -9,6 +9,7 @@ import bodyParser from "koa-bodyparser";
 import cors from "@koa/cors";
 import WebMonitor from "./monitor/node-monitor";
 import baseReponse from "./middlewares/baseReponse";
+import "./database";
 
 const monitor = new WebMonitor({
   logUrl: "http://localhost:8000/monitor/data-upload",

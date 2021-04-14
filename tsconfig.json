@@ -1,15 +1,19 @@
 {
   "compilerOptions": {
-    "lib": ["es5", "es6"],
-    "target": "es5",
-    "module": "commonjs",
+    "baseUrl": ".",
+    "target": "es2017",
+    "allowJs": true,
+    "lib": ["es5", "es6", "DOM"],
+    "types": ["reflect-metadata"],
+    "strict": true,
+    "module": "CommonJS",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "outDir": "./build",
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "typeRoots": ["node_modules/@types", "node_modules/koa-body", "./typings"], //将找不到types的js放在typings下
+    "outDir": "./build",
     "allowSyntheticDefaultImports": true,
-
     "sourceMap": true
   }
 }
